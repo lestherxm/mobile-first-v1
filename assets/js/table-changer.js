@@ -10,6 +10,7 @@ btnToCoins.addEventListener('click', toggleTables)
 function toggleTables(){
     tblCoins.classList.toggle('hide-element');
     tblCommissions.classList.toggle('hide-element');
+
     btnToCommissions.classList.toggle('hide-element');
     btnToCoins.classList.toggle('hide-element');
 }

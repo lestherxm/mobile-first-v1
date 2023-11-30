@@ -14,8 +14,9 @@
     --secondary-color-soft: #e7f5ff;
     --dark-color-1: #201e1c;
     --dark-color-2: #282623;
-    --light-darker-color: #bababa;
-    --light-gray-color: #757575;
+    /* --light-darker-color: #bababa; */
+    --light-darker-color: #636060;
+    --light-gray-color: #c1bdbd;
     --background-color: #faf8f7;
     --light-color: #fff;
 
@@ -31,6 +32,7 @@ html {
     /* 3. Typography */
     font-size: var(--primary-fz);
     font-family: var(--primary-ff);
+    scroll-behavior: smooth; /* an effect while scrolling with an anchor tag*/
 }
 
 *,
@@ -41,8 +43,6 @@ html {
     /* 2. Box Model */
     margin: 0;
     padding: 0;
-    /* 4. Visual Styles */
-    color-scheme: light dark; 
 }
 
 body{
@@ -138,6 +138,7 @@ header img{
     box-shadow: 0px 4px 8px var(--dark-color-2);
     border: none;
     border-radius: 0.5rem;
+    user-select: none;
 }
 
 .header__content-container .button span{
@@ -209,7 +210,16 @@ main{
     font-weight: 500;
     line-height: 1.6rem;
     /* 4. Visual Styles */
-    color: var(--light-gray-color);
+    color: var(--light-darker-color);
+}
+
+.main__tbls-container{
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
 }
 
 .table-container{
@@ -280,7 +290,6 @@ main{
     /* 4. Visual Styles */
     color: var(--light-darker-color);
     background-color: var(--light-color);
-    
 }
 
 .table-container .content th{
@@ -348,14 +357,6 @@ main{
     color: var(--secondary-color);
 }
 
-/* .tbl-coins{
-    display: block;
-}
-
-.tbl-commissions{
-    display: block;
-} */
-
 .hide-element{
     display: none;
 }
@@ -369,6 +370,13 @@ main{
     left: 0;
     background: url('../icons/chevron.svg') center/cover no-repeat;
     transform: rotate(-180deg);
+}
+
+.benefits-cards-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .benefits-container{
@@ -387,11 +395,14 @@ main{
 }
 
 .benefits-container .isotipo{
+    /* 1. Positioning */
     display: inline-block;
     position: absolute;
     top: -1rem;
+    /* 2. Box Model */
     width: 4.1rem;
     height: 2.4rem;
+    /* 4. Visual Styles */
     background: url('../icons/isotipo.svg') center/cover no-repeat;
     transform: scaleX(-1);
 }
@@ -451,7 +462,9 @@ main{
     justify-content: space-evenly;
     align-items: start;
     /* 2. Box Model */
-    width: 28.8rem;
+    width: 90%;
+    min-width: 28.8rem;
+    max-width: 40rem;
     min-height: 15.2rem;
     border-radius: 0.5rem;
     padding: 1.5rem;
@@ -461,38 +474,41 @@ main{
 }
 
 .benefit-card__title{
-    font-weight: 700;
+    margin-bottom: 1rem;
+    font-weight: bold;
     font-size: 1.8rem;
     line-height: 1.8rem;
     color: var(--light-color);
-    margin-bottom: 1rem;
 }
 
 .benefit-card__description{
-    font-weight: 500;
     font-size: 1.4rem;
+    font-weight: 500;
     line-height: 1.8rem;
-    color: var(--light-gray-color);
     text-align: left;
+    color: var(--light-gray-color);
 }
 
 .meet-us-container{
     display: flex;
     justify-content: center;
     position: relative;
-    min-height: 38.7rem;
-    background-image: url('../images/bitcoin-2.webp');
+    min-width: 32rem;
+    min-height: 50vh;
+    min-height: 50svh;
+    background-color: var(--primary-color);
+    background-image: url('../images/bitcoin-2-md.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: var(--primary-color);
 }
 
 .meet-us-container > p{
     position: absolute;
     top: 6.5rem;
-    font-weight: 700;
     font-size: 2.4rem;
+    line-height: 2.6rem;
+    font-weight: 700;
     text-align: center;
     color: var(--light-color);
 }
@@ -500,6 +516,7 @@ main{
 .plans-container{
     position: relative;
     margin: 6rem 0;
+    min-width: 32rem;
     height: 40rem;
 }
 
@@ -510,7 +527,7 @@ main{
     min-width: 28.8rem;
     min-height: 11.2rem;
     padding-top: 1rem;
-    margin: 1rem 1.5rem;
+    margin: 1rem 1.5rem 0rem;
     text-align: center;
 }
 
@@ -525,126 +542,92 @@ main{
     font-weight: 500;
     font-size: 1.4rem;
     font-language-override: 1.8rem;
-    color: var(--light-gray-color);
+    color: var(--light-darker-color);
 }
 
-.plan-card-container{
-    position: relative;
+.plans-card-slider{
     display: flex;
-    justify-content: space-between;
-    align-items: end;
+    scroll-snap-align: center;
     width: 100%;
+    min-width: 32rem;
     min-height: 27.5rem;
+    text-align: center;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    user-select: none;
 }
 
-.plan-card-container .item{
+.plans-card-slider .item{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    position: relative;
     text-align: center;
+    width: 70%;
+    min-width: 29rem;
+    max-width: 30rem;
     min-height: 25rem;
-    padding-top: 2rem;
-    box-shadow: 0px 2px 10px var(--light-darker-color);
+    padding: 0 1.5rem;
+    margin: 5rem 0.5rem 2rem;
     background-color: var(--light-color);
+    border-radius: 1.5rem;
+    box-shadow: 0px 4px 8px var(--light-darker-color);    
 }
 
-.plan-card-left{
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    width: 15%;
-    min-width: 5rem;
-}
-
-.plan-card-left .previous-plan, 
-.plan-card-right .next-plan{
+.plan-card__recommended{
     position: absolute;
-    top: 50%;
-    /* 1. Positioning */
-    display: inline-block;
-    /* 2. Box Model */
-    width: 2.5rem;
-    min-height: 2.4rem;
-    /* 4. Visual Styles */
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    background-color: inherit;
-}
-
-.previous-plan{
-    transform: rotate(180deg);
-    background-image: url('../icons/chevron.svg');
-    right: 1rem;
-}
-
-.next-plan{
-    background-image: url('../icons/chevron.svg');
-    left: 1rem;
-}
-
-.plan-card__center{
-    border-radius: 1rem;
-    width: 60%;
-    min-width: 19rem;
-}
-
-.plan-card-right{
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-    width: 15%;
-    min-width: 5rem;
-}
-
-.plan-card__name{
-    position: absolute;
+    text-align: center;
     top: -1.5rem;
-    border-radius: .8rem;
     padding: .8rem;
     font-weight: 700;
     font-size: 1.2rem;
     line-height: 1.4rem;
-    text-align: center;
     width: 10.5rem;
     min-height: 3rem;
-    background-color: var(--primary-color);
+    border-radius: .8rem;
+    background: var(--primary-color);
+    /* background: radial-gradient(circle, rgba(247,236,108,1) 0%, rgba(217,164,4,1) 70%); */
     color: var(--light-color);
 }
 
 .plan-card__period{
+    /* margin-top: 2rem; */
     font-size: 1.4rem;
+    font-weight: 700;
     line-height: 1.8rem;
     color: var(--dark-color-1);
 }
 
 .plan-card__price{
+    position: relative;
     font-size: 5rem;
     font-weight: 700;
     line-height: 6rem;
-    display: flex;
-    align-items: start;
 }
 
 .plan-card__price .currency{
+    position: absolute;
+    left: -1rem;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.4rem;
-    padding: 1rem 0.5rem 0rem;
 }
 
 .plan-card__advice{
     font-weight: 500;
     font-size: 1.2rem;
     line-height: 1.4rem;
-    color: var(--light-gray-color);
+    color: var(--light-darker-color);
     margin: 0 1.8rem;
 }
 
 .plan-card__choose-option{
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: space-evenly;
+    align-items: center;
     border-radius: .5rem;
     width: 15rem;
     min-height: 4.8rem;
@@ -652,9 +635,11 @@ main{
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1.8rem;
-    color: var(--dark-color-1);
-    border: 2px solid var(--primary-color);
     background-color: var(--background-color);
+    border: 2px solid var(--primary-color);
+    color: var(--dark-color-1);
+    user-select: none;
+    margin-bottom: 1rem;
 }
 
 .choose-option__icon{
@@ -670,6 +655,7 @@ main{
     justify-content: space-evenly;
     align-items: center;
     background-color: var(--primary-color);
+    color: var(--light-color);
 }
 
 .footer-container .social-media{
@@ -682,11 +668,11 @@ main{
 
 .social-media li a{
     text-decoration: none;
-    color: var(--light-color);
     font-size: 1.6rem;
     font-weight: 500;
     line-height: 1.8rem;
     cursor: pointer;
+    color: var(--light-color);
 }
 
 .footer-container .brand-info{

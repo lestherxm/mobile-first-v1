@@ -1,0 +1,16 @@
+html{
+    font-size: 70%;
+}
+
+.main__tbls-container{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+
+.plans-card-slider{
+    overflow-x: hidden;
+}
